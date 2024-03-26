@@ -74,7 +74,7 @@ namespace MrVibesRSA.OpenHardwareMonitor.GUI
                 string sensorName = dataGridView1.Rows[e.RowIndex].Cells["SensorName"].Value.ToString().ToLower();
                 string sensorType = dataGridView1.Rows[e.RowIndex].Cells["SensorType"].Value.ToString().ToLower();
 
-                string sensorNameWithUnderscores = sensorName.Replace(" ", "_");
+                string sensorNameWithUnderscores = sensorName.Replace(" ", "_").Replace("#", "");
 
                 if (currentState)
                 {

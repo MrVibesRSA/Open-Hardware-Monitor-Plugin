@@ -186,7 +186,7 @@ namespace MrVibesRSA.OpenHardwareMonitor
                 foreach (var whiteListedVariable in whiteListedVariables)
                 {
                     // Check if the names and sensor types match, and if the white list item is checked
-                    if (updatedVariable.Name.ToLower() == whiteListedVariable.Name.ToLower() &&
+                    if (updatedVariable.Name.ToLower().Replace(" ", "_").Replace("#", "") == whiteListedVariable.Name.ToLower().Replace(" ", "_").Replace("#", "") &&
                         updatedVariable.SensorType.ToLower() == whiteListedVariable.SensorType.ToLower() &&
                         whiteListedVariable.IsChecked)
                     {
@@ -195,11 +195,11 @@ namespace MrVibesRSA.OpenHardwareMonitor
                         VariableType minType = VariableTypeHelper.GetVariableType(updatedVariable.Min);
                         VariableType maxType = VariableTypeHelper.GetVariableType(updatedVariable.Max);
 
-                        VariableManager.SetValue($"ohm_{updatedVariable.Name}_{updatedVariable.SensorType}_value", updatedVariable.Value, valueType, PluginInstance.Main, new string[] { "OHM Gobal Variables" });
-                        VariableManager.SetValue($"ohm_{updatedVariable.Name}_{updatedVariable.SensorType}_min", updatedVariable.Min, minType, PluginInstance.Main, new string[] { "OHM Gobal Variables" });
-                        VariableManager.SetValue($"ohm_{updatedVariable.Name}_{updatedVariable.SensorType}_max", updatedVariable.Max, maxType, PluginInstance.Main, new string[] { "OHM Gobal Variables" });
+                        VariableManager.SetValue($"ohm_{updatedVariable.Name.Replace(" ", "_").Replace("#", "")}_{updatedVariable.SensorType}_value", updatedVariable.Value, valueType, PluginInstance.Main, new string[] { "OHM Gobal Variables" });
+                        VariableManager.SetValue($"ohm_{updatedVariable.Name.Replace(" ", "_").Replace("#", "")}_{updatedVariable.SensorType}_min", updatedVariable.Min, minType, PluginInstance.Main, new string[] { "OHM Gobal Variables" });
+                        VariableManager.SetValue($"ohm_{updatedVariable.Name.Replace(" ", "_").Replace("#", "")}_{updatedVariable.SensorType}_max", updatedVariable.Max, maxType, PluginInstance.Main, new string[] { "OHM Gobal Variables" });
 
-                        MacroDeckLogger.Info(PluginInstance.Main, $"Updating global variables: Successfully updated {updatedVariable.Name} - {updatedVariable.SensorType}");
+                        //MacroDeckLogger.Info(PluginInstance.Main, $"Updating global variables: Successfully updated {updatedVariable.Name} - {updatedVariable.SensorType}");
 
                     }
                 }
