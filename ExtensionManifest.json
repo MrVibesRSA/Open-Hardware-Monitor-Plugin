@@ -1,0 +1,12 @@
+{
+  "type": "Plugin",
+  "name": "Streamer.bot Plugin",
+  "author": "MrVibes_RSA",
+  "repository": "https://github.com/MrVibesRSA/Streamer.bot-Plugin",
+  "packageId": "MrVibesRSA.StreamerbotPlugin",
+  "version": "1.1.0",
+  "target-plugin-api-version": 40,
+  "target-macro-deck-version" : "2.13.1",
+  "dll": "StreamerbotPlugin.dll",
+  "author-discord-userid": "363735104872251392"
+}
